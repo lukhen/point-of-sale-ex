@@ -1,6 +1,9 @@
+from enum import Enum
+
+
 class Display:
     def text(self):
-        return 'Invalid barcode'
+        return DisplayMessages.INVALID_BARCODE.value
 
 
 class PointOfSale:
@@ -9,3 +12,7 @@ class PointOfSale:
 
     def onbarcode(self, barcode):
         pass
+
+
+class DisplayMessages(Enum):
+    INVALID_BARCODE = 'Invalid barcode'
