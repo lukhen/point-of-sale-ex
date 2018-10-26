@@ -3,6 +3,7 @@ from enum import Enum
 
 class Barcode:
     def __init__(self, barcode_string):
+        barcode_string = str.strip(barcode_string)
         if barcode_string == '':
             raise InvalidBarcodeError('Barcode string cannot be empty.')
 

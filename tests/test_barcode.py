@@ -7,7 +7,6 @@ def test_empty_barcode():
         Barcode('')
 
 
-@pytest.mark.skip(reason='Skip until Barcode.__eq__ is implemented and tested')
 def test_barcode_ends_with_carriage_return():
     assert Barcode('123\n') == Barcode('123')
 
