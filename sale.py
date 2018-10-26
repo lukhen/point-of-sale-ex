@@ -1,6 +1,16 @@
 from enum import Enum
 
 
+class Barcode:
+    def __init__(self, barcode_string):
+        if barcode_string == '':
+            raise InvalidBarcodeError('Barcode string cannot be empty.')
+
+
+class InvalidBarcodeError(Exception):
+    pass
+
+
 class Display:
     def __init__(self):
         self._text = ''
