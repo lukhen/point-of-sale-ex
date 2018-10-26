@@ -1,4 +1,5 @@
 from enum import Enum
+import re
 
 
 class Barcode:
@@ -6,7 +7,8 @@ class Barcode:
         barcode_string = str.strip(barcode_string)
         if barcode_string == '':
             raise InvalidBarcodeError('Barcode string cannot be empty.')
-
+        elif re.match('^\\d+$', barcode_string) is None:
+            raise InvalidBarcodeError('Barcode string cannot be empty.')
         self._barcode_string = barcode_string
 
     def __eq__(self, other):

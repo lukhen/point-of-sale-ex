@@ -14,3 +14,8 @@ def test_barcode_ends_with_carriage_return():
 def test_barcode_equal():
     assert Barcode('123') == Barcode('123')
     assert Barcode('123') != Barcode('124')
+
+
+def test_barcode_contains_not_only_digits():
+    with pytest.raises(InvalidBarcodeError):
+        Barcode('12c')
