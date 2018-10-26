@@ -16,7 +16,6 @@ def test_Inventory_is_empty():
     assert display.text() == DisplayMessages.PRODUCT_NOT_FOUND.value
 
 
-@pytest.mark.skip(reason="wait until Barcode class is implemented and tested")
 def test_barcode_contining_not_only_digits():
     display = Display()
     pos = PointOfSale(display)

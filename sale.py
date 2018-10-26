@@ -45,10 +45,16 @@ class PointOfSale:
         if barcode == '':
             self._display.print_message(
                 DisplayMessages.INVALID_BARCODE.value)
+        elif barcode != '':
+            try:
+                barcode = Barcode(barcode)
+                if len(self._inventory) == 0:
+                    self._display.print_message(
+                        DisplayMessages.PRODUCT_NOT_FOUND.value)
 
-        elif len(self._inventory) == 0:
-            self._display.print_message(
-                DisplayMessages.PRODUCT_NOT_FOUND.value)
+            except InvalidBarcodeError:
+                self._display.print_message(
+                    DisplayMessages.INVALID_BARCODE.value)
 
 
 class DisplayMessages(Enum):
