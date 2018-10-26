@@ -6,6 +6,13 @@ class Barcode:
         if barcode_string == '':
             raise InvalidBarcodeError('Barcode string cannot be empty.')
 
+        self._barcode_string = barcode_string
+
+    def __eq__(self, other):
+        if isinstance(other, Barcode) and \
+           other._barcode_string == self._barcode_string:
+            return True
+
 
 class InvalidBarcodeError(Exception):
     pass
