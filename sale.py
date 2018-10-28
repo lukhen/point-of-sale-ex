@@ -2,6 +2,16 @@ from enum import Enum
 import re
 
 
+class Money:
+    def __init__(self, amount, currency):
+        self._amount = amount
+        self._currency = currency
+
+    def __eq__(self, other):
+        if isinstance(other, Money):
+            return other._currency == self._currency and self._amount == other._amount
+
+
 class Barcode:
     def __init__(self, barcode_string):
         barcode_string = str.strip(barcode_string)
