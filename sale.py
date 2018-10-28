@@ -12,6 +12,11 @@ class Money:
             return other._currency == self._currency and self._amount == other._amount
 
 
+class Currency(Enum):
+    USD = '$'
+    PLN = 'zł'
+
+
 class Barcode:
     def __init__(self, barcode_string):
         barcode_string = str.strip(barcode_string)
