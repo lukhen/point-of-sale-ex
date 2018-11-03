@@ -47,8 +47,22 @@ class Display:
 
 
 class Inventory:
+    def __init__(self):
+        self._list_of_products = []
+
     def __len__(self):
         return 0
+
+    def __contains__(self, product):
+        return product in self._list_of_products
+
+    def add_product(self, product):
+        self._list_of_products.append(product)
+
+
+class Product:
+    def __init__(self, barcode, name, price):
+        pass
 
 
 class PointOfSale:
