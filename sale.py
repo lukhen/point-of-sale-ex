@@ -87,11 +87,7 @@ class PointOfSale:
     def onbarcode(self, barcode):
         try:
             barcode = Barcode(barcode)
-            if len(self._inventory) == 0:
-                self._display.print_message(
-                    DisplayMessages.PRODUCT_NOT_FOUND.value)
-
-            elif self._inventory.get_product_by_barcode(barcode) is None:
+            if self._inventory.get_product_by_barcode(barcode) is None:
                 self._display.print_message(
                     DisplayMessages.PRODUCT_NOT_FOUND.value)
 
