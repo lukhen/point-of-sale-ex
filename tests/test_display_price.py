@@ -36,7 +36,8 @@ def test_onbarcode_not_existing_product():
 def test_onbarcode_existing_product():
     display = Display()
     i = Inventory()
-    i.add_product(Product(Barcode('123'), 'book', Money(10, Currency.USD)))
+    price = Money(10, Currency.USD)
+    i.add_product(Product(Barcode('123'), 'book', price))
     pos = PointOfSale(display, i)
     pos.onbarcode('123')
-    assert display.text() == '10 $'
+    assert display.text() == str(price)
