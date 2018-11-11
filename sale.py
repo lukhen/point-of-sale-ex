@@ -30,6 +30,9 @@ class Barcode:
            other._barcode_string == self._barcode_string:
             return True
 
+    def __hash__(self):
+        return hash(self._barcode_string)
+
 
 class InvalidBarcodeError(Exception):
     pass
@@ -52,25 +55,20 @@ class Display:
 
 class Inventory:
     def __init__(self):
-        self._list_of_products = []
+        self._dict_of_products = {}
 
     def __len__(self):
         return 0
 
     def __contains__(self, product):
-        return product in self._list_of_products
+        return product.barcode in self._dict_of_products.keys()
 
     def add_product(self, product):
 
-        self._list_of_products.append(product)
+        self._dict_of_products[product.barcode] = product
 
     def get_product_by_barcode(self, barcode):
-        if len(self._list_of_products) == 0:
-            return None
-        else:
-            for product in self._list_of_products:
-                if product.barcode == barcode:
-                    return product
+        return self._dict_of_products.get(barcode, None)
 
 
 class Product:
