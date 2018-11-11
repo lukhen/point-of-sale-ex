@@ -65,12 +65,19 @@ class Inventory:
         self._list_of_products.append(product)
 
     def get_product_by_barcode(self, barcode):
-        return None
+        if len(self._list_of_products) == 0:
+            return None
+        else:
+            for product in self._list_of_products:
+                if product.barcode == barcode:
+                    return product
 
 
 class Product:
     def __init__(self, barcode, name, price):
-        pass
+        self.barcode = barcode
+        self.name = name
+        self.price = price
 
 
 class PointOfSale:
