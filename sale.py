@@ -58,7 +58,7 @@ class Inventory:
         self._dict_of_products = {}
 
     def __len__(self):
-        return 0
+        return len(self._dict_of_products)
 
     def __contains__(self, product):
         return product.barcode in self._dict_of_products.keys()
@@ -88,6 +88,10 @@ class PointOfSale:
         try:
             barcode = Barcode(barcode)
             if len(self._inventory) == 0:
+                self._display.print_message(
+                    DisplayMessages.PRODUCT_NOT_FOUND.value)
+
+            elif self._inventory.get_product_by_barcode(barcode) is None:
                 self._display.print_message(
                     DisplayMessages.PRODUCT_NOT_FOUND.value)
 
