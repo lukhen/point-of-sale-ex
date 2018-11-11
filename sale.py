@@ -35,6 +35,10 @@ class InvalidBarcodeError(Exception):
     pass
 
 
+class ProductError(Exception):
+    pass
+
+
 class Display:
     def __init__(self):
         self._text = ''
@@ -57,6 +61,7 @@ class Inventory:
         return product in self._list_of_products
 
     def add_product(self, product):
+
         self._list_of_products.append(product)
 
 
