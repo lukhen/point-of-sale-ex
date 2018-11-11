@@ -64,7 +64,8 @@ class Inventory:
         return product.barcode in self._dict_of_products.keys()
 
     def add_product(self, product):
-
+        if product in self:
+            raise ProductError('Product already in the inventory.')
         self._dict_of_products[product.barcode] = product
 
     def get_product_by_barcode(self, barcode):

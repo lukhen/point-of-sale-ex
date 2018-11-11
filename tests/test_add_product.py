@@ -12,7 +12,6 @@ def test_add_product_to_empty_inventory():
     assert p in i
 
 
-@pytest.mark.skip(reason='Skip until get_product_by_barcode is implemented and tested')
 def test_add_products_with_the_same_barcode():
     i = Inventory()
     p1 = Product(Barcode('234'), 'Book', Money(3.3, Currency.USD))
