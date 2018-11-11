@@ -64,6 +64,9 @@ class Inventory:
 
         self._list_of_products.append(product)
 
+    def get_product_by_barcode(self, barcode):
+        return None
+
 
 class Product:
     def __init__(self, barcode, name, price):
