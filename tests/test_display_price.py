@@ -31,3 +31,12 @@ def test_onbarcode_not_existing_product():
     pos = PointOfSale(display, i)
     pos.onbarcode('789')
     assert display.text() == DisplayMessages.PRODUCT_NOT_FOUND.value
+
+
+def test_onbarcode_existing_product():
+    display = Display()
+    i = Inventory()
+    i.add_product(Product(Barcode('123'), 'book', Money(10, Currency.USD)))
+    pos = PointOfSale(display, i)
+    pos.onbarcode('123')
+    assert display.text() == '10 $'

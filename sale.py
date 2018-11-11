@@ -11,6 +11,9 @@ class Money:
         if isinstance(other, Money):
             return other._currency == self._currency and self._amount == other._amount
 
+    def __str__(self):
+        return '{} {}'.format(self._amount, self._currency.value)
+
 
 class Currency(Enum):
     USD = '$'
@@ -91,6 +94,9 @@ class PointOfSale:
                 self._display.print_message(
                     DisplayMessages.PRODUCT_NOT_FOUND.value)
 
+            else:
+                self._display.print_message(
+                    str(self._inventory.get_product_by_barcode(barcode).price))
         except InvalidBarcodeError:
             self._display.print_message(
                 DisplayMessages.INVALID_BARCODE.value)
